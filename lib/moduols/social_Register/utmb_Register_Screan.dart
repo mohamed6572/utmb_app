@@ -19,7 +19,7 @@ class utmbRegisterScrean extends StatelessWidget {
       child: BlocConsumer<utmbRegisterCubit, utmbRegisterStates>(
         listener: (context, state) {
           if(state is utmbCreateUserSucseslState ){
-            navigateTo(context, Home());
+            navigateTo(context, Home_layout());
           }
         },
         builder: (context, state) {

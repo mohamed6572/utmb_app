@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
        themeMode: ThemeMode.light,
      //  cubit.isDark ? ThemeMode.dark : ThemeMode.light,
 
-       home: utmbLoginScrean(),
+       home: Home_layout(),
      );
 
   }
