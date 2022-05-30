@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.utmb">
-   <application
+    <application
         android:label="utmb"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

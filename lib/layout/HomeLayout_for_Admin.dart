@@ -4,38 +4,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:utmb/layout/cubit/cubit.dart';
 import 'package:utmb/layout/cubit/states.dart';
 
-class Home_layout extends StatelessWidget {
+class HomeLayout_for_Admin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>utmbCubit() ,
-      child: BlocConsumer<utmbCubit, utmbStates>(
-        listener: (context, state) {
+    return BlocConsumer<utmbCubit, utmbStates>(
+      listener: (context, state) {
 
-        },
-        builder: (context, state) {
-          var cubit = utmbCubit.get(context);
+      },
+      builder: (context, state) {
+        var cubit = utmbCubit.get(context);
 
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(cubit.titles[cubit.CurrentIndex]),
-            ),
-            body: cubit.Screans[cubit.CurrentIndex],
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: cubit.CurrentIndex,
-              onTap: (index){
-                cubit.ChangeIndex(index);
-              },
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Profile'),
-                BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-                BottomNavigationBarItem(icon: Icon(Icons.chat),label: 'Chat'),
-                BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'Settings'),
-              ],
-            ),
-          );
-        },
-      ),
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(cubit.titles[cubit.CurrentIndex]),
+          ),
+          body: cubit.Screans[cubit.CurrentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: cubit.CurrentIndex,
+            onTap: (index){
+              cubit.ChangeIndex(index);
+            },
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Profile'),
+              BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
+              BottomNavigationBarItem(icon: Icon(Icons.chat),label: 'Chat'),
+              BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'Settings'),
+            ],
+          ),
+        );
+      },
     );
   }
 }

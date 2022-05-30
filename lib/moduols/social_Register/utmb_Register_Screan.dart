@@ -1,7 +1,7 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:utmb/layout/HomeLayout.dart';
+import 'package:utmb/layout/HomeLayout_for_Admin.dart';
 import 'package:utmb/moduols/social_Register/cubit/Cubit.dart';
 import 'package:utmb/moduols/social_Register/cubit/States.dart';
 import 'package:utmb/shared/components/components.dart';
@@ -19,7 +19,7 @@ class utmbRegisterScrean extends StatelessWidget {
       child: BlocConsumer<utmbRegisterCubit, utmbRegisterStates>(
         listener: (context, state) {
           if(state is utmbCreateUserSucseslState ){
-            navigateTo(context, Home_layout());
+            navigateTo(context, HomeLayout_for_Admin());
           }
         },
         builder: (context, state) {

@@ -7,25 +7,25 @@ class utmbLoginCubit extends Cubit<utmbLoginStates> {
   utmbLoginCubit() : super(utmbLoginIntialState());
 
   static utmbLoginCubit get(context) => BlocProvider.of(context);
-  //
-  // void userLogin({
-  //   required String email,
-  //   required String password,
-  // }) {
-  //   emit(utmbLoginLodingState());
-  //
-  //   FirebaseAuth.instance
-  //       .signInWithEmailAndPassword(email: email, password: password)
-  //       .then((value) {
-  //         print(value.user?.email);
-  //         print(value.user?.uid);
-  //     emit(utmbLoginSucsesState(value.user?.uid));
-  //
-  //   })
-  //       .catchError((error) {
-  //     emit(utmbLoginerrorState(error.toString()));
-  //   });
-  // }
+
+  void userLogin({
+    required String email,
+    required String password,
+  }) {
+    emit(utmbLoginLodingState());
+
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((value) {
+          print(value.user?.email);
+          print(value.user?.uid);
+      emit(utmbLoginSucsesState(value.user?.uid));
+
+    })
+        .catchError((error) {
+      emit(utmbLoginerrorState(error.toString()));
+    });
+  }
 
   IconData suffix = Icons.visibility;
   bool isPassword = true;

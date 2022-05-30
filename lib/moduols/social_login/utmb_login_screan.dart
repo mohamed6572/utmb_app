@@ -1,10 +1,12 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:utmb/layout/HomeLayout_for_Admin.dart';
 import 'package:utmb/moduols/social_Register/utmb_Register_Screan.dart';
 import 'package:utmb/moduols/social_login/cubit/Cubit.dart';
 import 'package:utmb/moduols/social_login/cubit/States.dart';
 import 'package:utmb/shared/components/components.dart';
+import 'package:utmb/shared/network/local/casheHelper.dart';
 
 
 
@@ -19,7 +21,14 @@ class utmbLoginScrean extends StatelessWidget {
       create: (context) => utmbLoginCubit(),
       child: BlocConsumer<utmbLoginCubit, utmbLoginStates>(
         listener: (context, state) {
+      if (state is utmbLoginSucsesState) {
+        casheHelper.SavaData(
+            key: 'uId', value: state.uId
+        ).then((value) {
 
+          navigateToAndFinish(context, HomeLayout_for_Admin());
+        });
+        }
         },
         builder: (context, state) {
           return Scaffold(
@@ -101,9 +110,9 @@ class utmbLoginScrean extends StatelessWidget {
                               print(emailController.text);
                               print(passwordController.text);
                               if (formkey.currentState!.validate()) {
-                                // utmbLoginCubit.get(context).userLogin(
-                                //     email: emailController.text,
-                                //     password: passwordController.text);
+                                utmbLoginCubit.get(context).userLogin(
+                                    email: emailController.text,
+                                    password: passwordController.text);
                               }
                             },
                           ),
@@ -113,17 +122,17 @@ class utmbLoginScrean extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Dont\'t have an account?'),
-                            defultTextButtton(
-                                text: 'register now',
-                                function: () {
-                                  navigateTo(context, utmbRegisterScrean());
-                                }),
-                          ],
-                        )
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Text('Dont\'t have an account?'),
+                        //     // defultTextButtton(
+                        //     //     text: 'register now',
+                        //     //     function: () {
+                        //     //       navigateTo(context, utmbRegisterScrean());
+                        //     //     }),
+                        //   ],
+                        // )
                       ],
                     ),
                   ),
